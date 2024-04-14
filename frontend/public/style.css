@@ -2,7 +2,7 @@ body {
     margin: 0%;
     padding: 0%;
     background: linear-gradient(to right, #ffefba, #ffffff);
-    overflow-y: hidden;
+    overflow-y: auto; /* Change overflow to auto */
     font-family: Nunito, sans-serif;
 }
 .container{
@@ -12,32 +12,32 @@ body {
     align-items: center;
 }
 h1{
-    font-size: 6.5em;
+    font-size: 6.5vw; /* Change font size to viewport width */
     margin: 1% 0% -5% 0%;
     font-family: Nunito, sans-serif;
     -webkit-text-stroke: 2px black;
     color: white;
 }
 #country_score{
-    margin-left: 50px;
+    margin-left: 5vw; /* Change margin to viewport width */
 }
 #score{
-    font-size: 4em;
+    font-size: 4vw;
     font-family: Nunito, sans-serif;
     -webkit-text-stroke: 2px black;
     color: white;
     margin-bottom: -4%;
 }
 button{
-    margin-top: 2.5%;
-    font-size: 25px;
+    margin-top: 2.5vw;
+    font-size: 2vw;
     background-color: white;
-    padding: 10px 250px 10px 250px;
+    padding: 1vw 5vw 1vw 5vw;
     border: none;
     outline: none;
 }
 .tabs {
-    margin-top: 2.5%;
+    margin-top: 2.5vw;
     border-radius: 8px;
     overflow: hidden;
     box-shadow: 0 4px 4px -2px rgba(0, 0, 0, 0.5);
@@ -51,13 +51,11 @@ label{
     word-spacing: 1cm;
 }
 .tab-label {
-    word-spacing: 50px;
-    display: -webkit-box;
-    color: black;
+    word-spacing: 5vw; /* Change word spacing to viewport width */
     display: flex;
-    -webkit-box-pack: justify;
+    color: black;
     justify-content: space-between;
-    padding: 1em 3em 1em 3em;
+    padding: 1vw 3vw 1vw 3vw;
     background:white;
     font-weight: bold;
     cursor: pointer;
@@ -73,6 +71,7 @@ label{
     background: white;
     -webkit-transition: all .35s;
     transition: all .35s;
+    display: none;
 }
 input:checked + .tab-label::after {
     content: "\02C5";
@@ -83,49 +82,49 @@ input:checked ~ .tab-content {
     justify-content: center;
     align-items: center;
     position: absolute;
-    top: 32%;
+    top: 32vw;
     overflow-y:scroll;
-    max-height: 55%;
-    font-size: 20px;
-    padding: 50px 20px 20px 20px;
+    height: 5vw;
+    width: 51vw;
+    font-size: 1.3vw;
+    padding: 5vw 2vw 2vw 2vw;
     border-radius: 15px;
 }
-table{
+table {
     border-collapse: collapse;
+    width: 100%; /* Ensure table takes full width */
 }
-tr.bordered {
-    border-bottom: 1px solid silver;
-    white-space: nowrap;
+
+tr.bordered > td {
+    padding: 0.5em 0; /* Adjusted padding for smaller screens */
 }
-tr.bordered>td{
-    padding-top: 0.5em;
-    padding-bottom: 0.3em;
+
+tr.bordered > #wide_score {
+    padding-left: 5vw; /* Change padding to viewport width */
 }
-tr.bordered>#wide_score{
-    padding-left: 17.2em;
-}
+
 input {
     position: absolute;
     opacity: 0;
     z-index: -1;
 }
-/* Your CSS styles here */
+
 .select-container {
     position: relative;
     display: inline-block;
     position: fixed;
-    top: 10px;
-    left: 10px;
+    top: 2vw; /* Change top to viewport width */
+    left: 2vw; /* Change left to viewport width */
     z-index: 999; /* Ensure it appears on top */
-    border: 2px solid #000; /* Add a border for better visibility */
-    border-radius: 5px; /* Add border radius for rounded corners */
+    border: 0.2vw solid #000; /* Change border to viewport width */
+    border-radius: 1vw; /* Change border radius to viewport width */
 }
 
 .select-trigger {
     background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 5px;
+    border: 0.1vw solid #ccc; /* Change border to viewport width */
+    border-radius: 1vw; /* Change border radius to viewport width */
+    padding: 0.5vw; /* Change padding to viewport width */
     cursor: pointer;
 }
 
@@ -134,18 +133,18 @@ input {
     top: 100%;
     left: 0;
     width: 100%;
-    max-height: 200px;
+    max-height: 30vw; /* Change max-height to viewport width */
     overflow-y: auto;
     background-color: #fff;
-    border: 1px solid #ccc;
+    border: 0.1vw solid #ccc; /* Change border to viewport width */
     border-top: none;
-    border-radius: 0 0 5px 5px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 0 0 1vw 1vw; /* Change border radius to viewport width */
+    box-shadow: 0 0.4vw 0.8vw rgba(0, 0, 0, 0.1); /* Change box shadow to viewport width */
     display: none;
 }
 
 .option {
-    padding: 5px;
+    padding: 0.5vw; /* Change padding to viewport width */
     cursor: pointer;
 }
 
@@ -153,7 +152,7 @@ input {
     max-width: 100%;
     height: auto;
     display: block;
-    margin-right: 10px;
+    margin-right: 1vw; /* Change margin to viewport width */
 }
 
 @media only screen and (max-width: 480px) {
