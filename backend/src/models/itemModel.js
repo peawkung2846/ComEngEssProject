@@ -10,7 +10,7 @@ const itemSchema = new mongoose.Schema({
     required: true,
   },
   pop: {
-    type: Number,
+    type: Array,
     required: true,
   },
 });

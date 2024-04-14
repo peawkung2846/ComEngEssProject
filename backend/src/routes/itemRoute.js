@@ -6,6 +6,7 @@ const router = express.Router();
 
 router.get("/", itemController.getItems);
 router.post("/", itemController.createItem);
+router.post("/update/", itemController.update);
 router.delete("/:id", itemController.deleteItem);
 router.post("/filter", itemController.filterItems);
 // TODO3: add a router for the filter function
