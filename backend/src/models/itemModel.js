@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const itemSchema = new mongoose.Schema({
-  item: {
+  id: {
     type: String,
     required: true,
   },
@@ -9,7 +9,7 @@ const itemSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  price: {
+  pop: {
     type: Number,
     required: true,
   },
