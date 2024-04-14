@@ -11,11 +11,19 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icon-css/3.5.0/css/flag-icon.min.css" integrity="sha512-Cv93isQdFwaKBV+Z4X8kaVBYWHST58Xb/jVOcV9aRsGSArZsgAnFIhMpDoMDcFNoUtday1hdjn0nGp3+KZyyFw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
-<body onload="startCount()">
+<body>
     <div class="container">
         <h1>POPCAT</h1>
         <p id="score">0</p>
-        <img src="popcat1.png" alt="Invalid" id="popcat1" height="600px">
+        <div class="select-container">
+            <div class="select-trigger" onclick="toggleOptions()">Select Image</div>
+            <div class="options" id="options">
+                <div class="option" onclick="changeImage('popcat1.png')"><img src="popcat1.png" alt="Image 1"> Image 1</div>
+                <div class="option" onclick="changeImage('popcat2.png')"><img src="popcat2.png" alt="Image 2"> Image 2</div>
+                <!-- Add more options as needed -->
+            </div>
+        </div>
+        <img src="popcat1.png" alt="Selected Image" id="selectedImage">
         <div class="tabs">
             <div class="tab">
                <input type="checkbox" id="chck1">
