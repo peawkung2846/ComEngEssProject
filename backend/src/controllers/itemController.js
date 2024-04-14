@@ -16,7 +16,6 @@ export const createItem = async (req, res) => {
 };
 
 export const update = async (req, res) => {
-  console.log('a')
   try {
     const {filterName,index,value} = req.body;
     let items = []
