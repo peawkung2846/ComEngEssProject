@@ -55,35 +55,35 @@ img.addEventListener("touchmove", function(event){
 
 
 // Score on leaderboard
-setInterval(startCountHk, 1);
+//setInterval(startCountHk, 1);
 
 function startCountHk(){
     hk_score++;
     document.getElementById("table").rows[1].cells.item(3).innerHTML = hk_score;
 }
 
-setInterval(startCountTw, 20);
+//setInterval(startCountTw, 20);
 
 function startCountTw(){
     tw_score++;
     document.getElementById("table").rows[2].cells.item(3).innerHTML = tw_score;
 }
 
-setInterval(startCountTh, 25);
+//setInterval(startCountTh, 25);
 
 function startCountTh(){
     th_score++;
     document.getElementById("table").rows[3].cells.item(3).innerHTML = th_score;
 }
 
-setInterval(startCountJp, 40);
+//setInterval(startCountJp, 40);
 
 function startCountJp(){
     jp_score++;
     document.getElementById("table").rows[4].cells.item(3).innerHTML = jp_score;
 }
 
-setInterval(startCountFi, 34);
+/*setInterval(startCountFi, 34);
 
 function startCountFi(){
     fi_score++;
@@ -130,14 +130,14 @@ setInterval(startCountSr, 5);
 function startCountSr(){
     sr_score++;
     document.getElementById("table").rows[12].cells.item(3).innerHTML = sr_score;
-}
+}*/
 
 function increaseScore(){
     score++;
     MyScore++;
     count.innerHTML = score;
     malaysiaScore.innerHTML = MyScore;
-    document.getElementById("table").rows[5].cells.item(3).innerHTML = MyScore;
+    document.getElementById("table").rows[4].cells.item(3).innerHTML = MyScore;
 }
 
 function toggleOptions() {
