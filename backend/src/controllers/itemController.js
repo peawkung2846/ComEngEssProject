@@ -15,6 +15,25 @@ export const createItem = async (req, res) => {
   }
 };
 
+export const update = async (req, res) => {
+  console.log('a')
+  try {
+    const {filterName,index,value} = req.body;
+    let items = []
+    items = await Item.find({ name : filterName });
+    items[0].pop[index] = value;
+    await items[0].save();
+
+    res.status(200).json({ message: "OK" });
+  } catch (err) {
+    if (err.name === "ValidationError") {
+      res.status(400).json({ error: "Bad Request" });
+    } else {
+      res.status(500).json({ error: "Internal server error." });
+    }
+  }
+};
+
 export const getItems = async (req, res) => {
   const items = await Item.find();
 
