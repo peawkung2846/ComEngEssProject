@@ -82,15 +82,9 @@ export async function checkID(ipAddress) {
               'Content-Type': 'application/json'
           },
           body: JSON.stringify({ id: ipAddress })
-      });
-
-      if (response.ok) {
-          const data = await response.json();
-          return data; // true or false
-      } else {
-          console.error('Failed to check ID:', response.statusText);
-          return null;
-      }
+      }).then((r) => r.json());
+      console.log(response.message);
+      return response;
   } catch (error) {
       console.error('Error checking ID:', error);
       return null;
