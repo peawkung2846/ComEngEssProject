@@ -12,11 +12,8 @@ var hk_score = 1000, tw_score = 430, th_score = 200, jp_score = 150, fi_score = 
 var userIp;
 document.addEventListener("DOMContentLoaded", () =>{
     fetchAndDrawTable();
-    userIp = getUserIP();
-    console.log(userIp);
-})
-var username;
 
+})
 // mouseclick event
 
 img.addEventListener("mousedown", function(event){
@@ -166,7 +163,7 @@ function changeImage(image) {
     toggleOptions();
 }
 
-
+var username;
 const popupOverlay = document.getElementById('popupOverlay');
 
 const popup = document.getElementById('popup');
@@ -191,18 +188,10 @@ function closePopupFunc() {
 
 }
 
-// Function to submit the signup form
-
-function submitForm() {
-
+document.getElementById('signup').addEventListener("click", function(){ 
     username = emailInput.value;
-
-    // Add your form submission logic here
-
-
-    closePopupFunc(); // Close the popup after form submission
-
-}
+    closePopupFunc();
+});
 
 // Event listeners
 
@@ -225,4 +214,6 @@ popupOverlay.addEventListener('click', function (event) {
     }
 
 });
+
+
 
