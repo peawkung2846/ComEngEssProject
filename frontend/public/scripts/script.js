@@ -4,7 +4,7 @@ var malaysiaScore = document.getElementById('my_score');
 var score = 0;
 var MyScore = 10000;
 var audio = new Audio('pop.mp3');
-var hk_score = 1000, tw_score = 430, th_score = 200, jp_score = 150, fi_score = 250, se_score = 100, pl_score = 500, dm_score = 280, id_score=590, hu_score=319, sr_score = 300; 
+var username;
 
 // mouseclick event
 
@@ -150,3 +150,64 @@ function changeImage(image) {
     document.getElementById('selectedImage').src = image;
     toggleOptions();
 }
+
+
+const popupOverlay = document.getElementById('popupOverlay');
+
+const popup = document.getElementById('popup');
+
+const closePopup = document.getElementById('closePopup');
+
+const emailInput = document.getElementById('emailInput');
+
+// Function to open the popup
+
+function openPopup() {
+
+    popupOverlay.style.display = 'block';
+
+}
+
+// Function to close the popup
+
+function closePopupFunc() {
+
+    popupOverlay.style.display = 'none';
+
+}
+
+// Function to submit the signup form
+
+function submitForm() {
+
+    username = emailInput.value;
+
+    // Add your form submission logic here
+
+
+    closePopupFunc(); // Close the popup after form submission
+
+}
+
+// Event listeners
+
+// Trigger the popup to open (you can call this function on a button click or any other event)
+
+openPopup();
+
+// Close the popup when the close button is clicked
+
+closePopup.addEventListener('click', closePopupFunc);
+
+// Close the popup when clicking outside the popup content
+
+popupOverlay.addEventListener('click', function (event) {
+
+    if (event.target === popupOverlay) {
+
+        closePopupFunc();
+
+    }
+
+});
+
