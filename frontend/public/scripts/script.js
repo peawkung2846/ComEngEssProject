@@ -1,6 +1,6 @@
 import { fetchAndDrawTable } from "./table.js";
 import { updateClickCount ,updateClickTimes} from "./click.js";
-import { getUserIP } from "./api.js";
+import { getUserIP , checkID} from "./api.js";
 
 var img = document.getElementById("selectedImage");
 var count = document.getElementById("score");
@@ -19,7 +19,7 @@ document.addEventListener("DOMContentLoaded", () =>{
 
 img.addEventListener("mousedown", function(event){
     increaseScore();
-    updateClickTimes("123", 1);
+    console.log(checkID("123"));
     if (img.src.includes('popcat1.png')) {
         img.src = 'popcat2.png';
         audio.currentTime = 0;
