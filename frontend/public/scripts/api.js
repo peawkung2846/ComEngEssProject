@@ -73,3 +73,26 @@ export async function getUserIP() {
       return null;
   }
 }
+
+async function checkID(ipAddress) {
+  try {
+      const response = await fetch('/check-id', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ id: ipAddress })
+      });
+
+      if (response.ok) {
+          const data = await response.json();
+          return data.message; // true or false
+      } else {
+          console.error('Failed to check ID:', response.statusText);
+          return null;
+      }
+  } catch (error) {
+      console.error('Error checking ID:', error);
+      return null;
+  }
+}
