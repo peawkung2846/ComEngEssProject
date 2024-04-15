@@ -1,13 +1,11 @@
-import { getUserIP, createItem, getItems } from "./api.js";
+import { getUserIP, createItem, getItems, checkID } from "./api.js";
 import { BACKEND_URL } from "./config.js";
 export async function updateClickTimes(userIP, num) {
     try {
         // Fetch the item associated with the userIP
-        console.log(userIP);
-        const response = await fetch(`${BACKEND_URL}/items?id=${userIP}`);
-        const data = getItems();
-        
-        if (data.length > 0) {
+        if (checkID(userIP)) {
+            console.log(checkID(userIP));
+            const data = checkID(userIP);
             const userId = data[0].id;
             const pop = data[0].pop;
             pop[num]++;

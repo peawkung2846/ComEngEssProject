@@ -12,16 +12,14 @@ var hk_score = 1000, tw_score = 430, th_score = 200, jp_score = 150, fi_score = 
 var userIp;
 document.addEventListener("DOMContentLoaded", () =>{
     fetchAndDrawTable();
-    userIp = getUserIP();
-    console.log(userIp);
+    var userIp = getUserIP();
 })
-var username;
 
 // mouseclick event
 
 img.addEventListener("mousedown", function(event){
     increaseScore();
-    updateClickTimes(getUserIP, 1)
+    updateClickTimes("123", 1);
     if (img.src.includes('popcat1.png')) {
         img.src = 'popcat2.png';
         audio.currentTime = 0;

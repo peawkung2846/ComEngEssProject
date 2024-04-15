@@ -74,7 +74,7 @@ export async function getUserIP() {
   }
 }
 
-async function checkID(ipAddress) {
+export async function checkID(ipAddress) {
   try {
       const response = await fetch('/check-id', {
           method: 'POST',
