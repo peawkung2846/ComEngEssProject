@@ -195,6 +195,12 @@ input {
     background: #F8F8F8;
 }
 
+#playerRow{
+    position: sticky; /* Set the last row to sticky */
+    bottom: 0; /* Stick to the bottom */
+    background-color: #fff;
+}
+
 /* Responsive */
 
 @media (max-width: 400px) {
