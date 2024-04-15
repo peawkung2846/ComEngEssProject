@@ -1,3 +1,4 @@
+import { error } from "console";
 import Item from "../models/itemModel.js";
 
 export const createItem = async (req, res) => {
@@ -37,6 +38,27 @@ export const getItems = async (req, res) => {
   const items = await Item.find();
 
   res.status(200).json(items);
+};
+
+export const checkID= async(req,res) => {
+  const ipAddress = req.body.id;
+
+  try{
+    const foundIP = await Item.findOne({id : ipAddress});
+
+    //console.log('ipAddress:', ipAddress);
+    //console.log('foundItem:', foundIP);
+
+    if (foundIP) {
+      res.json({ message: true });
+    } else {
+      res.json({ message: false });
+    }
+  }
+  catch (err){
+    console.error('Error cheching IP : ',err);
+    res.status(500).json({error: 'server ip error'});
+  }
 };
 
 export const deleteItem = async (req, res) => {
