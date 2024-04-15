@@ -76,7 +76,7 @@ export async function getUserIP() {
 
 export async function checkID(ipAddress) {
   try {
-      const response = await fetch('/check-id', {
+      const response = await fetch(`${BACKEND_URL}/items/check/`, {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json'
@@ -86,7 +86,7 @@ export async function checkID(ipAddress) {
 
       if (response.ok) {
           const data = await response.json();
-          return data.message; // true or false
+          return data; // true or false
       } else {
           console.error('Failed to check ID:', response.statusText);
           return null;

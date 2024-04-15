@@ -50,7 +50,7 @@ export const checkID= async(req,res) => {
     //console.log('foundItem:', foundIP);
 
     if (foundIP) {
-      res.json({ message: true });
+      res.json({ message: true, item: foundIP });
     } else {
       res.json({ message: false });
     }
