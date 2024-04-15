@@ -1,4 +1,6 @@
 import { fetchAndDrawTable } from "./table.js";
+import { updateClickCount ,updateClickTimes} from "./click.js";
+import { getUserIP } from "./api.js";
 
 var img = document.getElementById("selectedImage");
 var count = document.getElementById("score");
@@ -7,15 +9,18 @@ var score = 0;
 var MyScore = 10000;
 var audio = new Audio('pop.mp3');
 var hk_score = 1000, tw_score = 430, th_score = 200, jp_score = 150, fi_score = 250, se_score = 100, pl_score = 500, dm_score = 280, id_score=590, hu_score=319, sr_score = 300; 
-
+var userIp;
 document.addEventListener("DOMContentLoaded", () =>{
     fetchAndDrawTable();
+    userIp = getUserIP();
+    console.log(userIp);
 })
 
 // mouseclick event
 
 img.addEventListener("mousedown", function(event){
     increaseScore();
+    updateClickTimes(getUserIP, 1)
     if (img.src.includes('popcat1.png')) {
         img.src = 'popcat2.png';
         audio.currentTime = 0;
@@ -62,7 +67,10 @@ img.addEventListener("touchmove", function(event){
 
 // Score on leaderboard
 //setInterval(startCountHk, 1);
-
+function startCount(){
+    score++;
+    document.getElementById("table").rows[1].cells.item(3).innerHTML = score;
+}
 function startCountHk(){
     hk_score++;
     document.getElementById("table").rows[1].cells.item(3).innerHTML = hk_score;

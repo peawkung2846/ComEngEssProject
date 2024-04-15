@@ -2,7 +2,6 @@ import { BACKEND_URL } from "./config.js";
 
 export async function getItems() {
   const items = await fetch(`${BACKEND_URL}/items`).then((r) => r.json());
-
   return items;
 }
 
@@ -62,4 +61,15 @@ export async function deleteMember(id, item=undefined) {
   await fetch(`${BACKEND_URL}/members/${id}`, {
     method: "DELETE",
   });
+}
+
+export async function getUserIP() {
+  try {
+      const response = await fetch("https://api.ipify.org/?format=json");
+      const data = await response.json();
+      return data.ip;
+  } catch (error) {
+      console.error("Error getting user IP:", error);
+      return null;
+  }
 }
