@@ -80,7 +80,7 @@ label{
     border-radius: 1vw; /* Change border radius to viewport width */
 }
 
-.select-trigger {
+#select-trigger {
     background-color: #fff;
     border: 0.1vw solid #ccc; /* Change border to viewport width */
     border-radius: 1vw; /* Change border radius to viewport width */

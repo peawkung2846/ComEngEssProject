@@ -31,47 +31,7 @@ export async function deleteItem(id, item) {
   });
 }
 
-export async function filterItems(filterName, lowerPrice, upperPrice) {
-  // TODO3: implement this function
-  // You may need to understand handleFilterItem() function in ./table.js before implementing this function.
-  const payload = {
-    filterName: filterName,
-    lowerPrice: lowerPrice,
-    upperPrice: upperPrice
-  }
-  const res = await fetch(`${BACKEND_URL}/items/filter`,{
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(payload),
-  }).then((r) => r.json());
-  return res/* return the filted items */;
-}
 
-export async function getMembers() {
-  // TODO4: implement this function
-  const members = await fetch(`${BACKEND_URL}/members`).then(r=>r.json());
-  return members/* return all members */;
-}
-
-export async function createMember(member) {
-  // TODO4: implement this function
-  await fetch(`${BACKEND_URL}/members`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(member),
-  });
-}
-
-export async function deleteMember(id, item=undefined) {
-  // TODO4: implement this function
-  await fetch(`${BACKEND_URL}/members/${id}`, {
-    method: "DELETE",
-  });
-}
 
 export async function getUserIP() {
   try {
@@ -93,7 +53,6 @@ export async function checkID(ipAddress) {
           },
           body: JSON.stringify({ id: ipAddress })
       }).then((r) => r.json());
-      console.log(response.message);
       return response;
   } catch (error) {
       console.error('Error checking ID:', error);
