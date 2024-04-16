@@ -15,6 +15,16 @@ export async function createItem(item) {
   });
 }
 
+export async function update(item) {
+  await fetch(`${BACKEND_URL}/items/update/`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(item),
+  });
+}
+
 export async function deleteItem(id, item) {
   await fetch(`${BACKEND_URL}/items/${id}`, {
     method: "DELETE",
@@ -65,14 +75,14 @@ export async function deleteMember(id, item=undefined) {
 
 export async function getUserIP() {
   try {
-      const response = await fetch("https://api.ipify.org/?format=json");
-      const data = await response.json();
-      return data.ip;
+      const response = await fetch("https://api.ipify.org/?format=json").then((r) => r.json());
+      return response;
   } catch (error) {
       console.error("Error getting user IP:", error);
       return null;
   }
 }
+
 
 export async function checkID(ipAddress) {
   try {

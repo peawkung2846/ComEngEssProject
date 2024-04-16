@@ -1,20 +1,19 @@
-import { fetchAndDrawTable } from "./table.js";
+import { fetchAndDrawTable, drawPlayerRow } from "./table.js";
 import { updateClickCount ,updateClickTimes} from "./click.js";
-import { getUserIP , checkID} from "./api.js";
+import { getUserIP , checkID, createItem, update} from "./api.js";
 
 var img = document.getElementById("selectedImage");
 var count = document.getElementById("score");
-var malaysiaScore = document.getElementById('my_score');
-var score = 0;
-var MyScore = 10000;
+var score = [0,0,0];
+var sum_score = 0;
+var prev_sum = 0;
 var audio = new Audio('pop.mp3');
-var hk_score = 1000, tw_score = 430, th_score = 200, jp_score = 150, fi_score = 250, se_score = 100, pl_score = 500, dm_score = 280, id_score=590, hu_score=319, sr_score = 300; 
-var userIp;
-document.addEventListener("DOMContentLoaded", () =>{
-    fetchAndDrawTable();
-    userIp = getUserIP();
+let userIp;
+var username;
+document.addEventListener("DOMContentLoaded", async () =>{
+    await fetchAndDrawTable();
+    await openPopup();
 })
-// mouseclick event
 
 img.addEventListener("mousedown", function(event){
     increaseScore();
@@ -63,19 +62,29 @@ img.addEventListener("touchmove", function(event){
 
 
 // Score on leaderboard
-//setInterval(startCountHk, 1);
-function startCount(){
-    score++;
-    document.getElementById("table").rows[1].cells.item(3).innerHTML = score;
-}
+//setInterval(updateDb, 60000);
 
 function increaseScore(){
-    score++;
-    MyScore++;
-    count.innerHTML = score;
-    // malaysiaScore.innerHTML = MyScore;
-    // document.getElementById("table").rows[4].cells.item(3).innerHTML = MyScore;
+    score[0]++;
+    sum_score++;
+    count.innerHTML = score[0];
+    document.getElementById("playerRow").cells[1].innerHTML = score[0];
+    document.getElementById("playerRow").cells[4].innerHTML = sum_score;
 }
+
+function updateDb(){
+    if(sum_score === prev_sum){
+        return;
+    }
+    const payload = {
+        filterName: username,
+        value: score,
+    };
+    update(payload);
+    prev_sum = sum_score;
+}
+
+setInterval(updateDb, 60000);
 
 function toggleOptions() {
     var options = document.getElementById('options');
@@ -88,37 +97,27 @@ function changeImage(image) {
     toggleOptions();
 }
 
-var username;
 const popupOverlay = document.getElementById('popupOverlay');
-
-const popup = document.getElementById('popup');
-
-const closePopup = document.getElementById('closePopup');
 
 const emailInput = document.getElementById('emailInput');
 
-// Function to open the popup
 
-function openPopup() {
-    var result =  checkID("69420");
-    result.then(data => {
-        if(data.message){
-            username = data.item.name;
-            score = data.item.pop[0];
-            count.innerHTML = score;
-        }
-        else{
-            popupOverlay.style.display = 'block';
-        }
-      }).catch(error => {
-        // Handle errors if the promise is rejected
-        console.error(error);
-      });
+async function openPopup() {
+    userIp = await getUserIP();
+    var data =  await checkID(userIp.ip);
+    if(data.message){
+        username = data.item.name;
+        score = data.item.pop;
+        sum_score = score[0]+score[1]+score[2];
+        prev_sum = sum_score;
+        count.innerHTML = score[0];
+        drawPlayerRow(username,score);
+    }
+    else{
+        popupOverlay.style.display = 'block';
+    }
     
-
 }
-
-// Function to close the popup
 
 function closePopupFunc() {
 
@@ -126,32 +125,20 @@ function closePopupFunc() {
 
 }
 
-document.getElementById('signup').addEventListener("click", function(){ 
+document.getElementById('signup').addEventListener("click", async function(){ 
     username = emailInput.value;
     closePopupFunc();
+    drawPlayerRow(username,score);
+    userIp = await getUserIP();
+    const payload = {
+        id: userIp.ip,
+        name: username,
+        pop: score,
+      };
+    createItem(payload);
 });
 
-// Event listeners
 
-// Trigger the popup to open (you can call this function on a button click or any other event)
-
-openPopup();
-
-// Close the popup when the close button is clicked
-
-closePopup.addEventListener('click', closePopupFunc);
-
-// Close the popup when clicking outside the popup content
-
-popupOverlay.addEventListener('click', function (event) {
-
-    if (event.target === popupOverlay) {
-
-        closePopupFunc();
-
-    }
-
-});
 
 
 
