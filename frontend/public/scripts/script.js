@@ -12,6 +12,7 @@ var prev_sum = 0;
 var audio = new Audio('pop.mp3');
 let userIp;
 var username;
+var mode = 0;
 document.addEventListener("DOMContentLoaded", async () =>{
     getUserIP().then((data) => {
         fetchAndDrawTable(data.ip);
@@ -28,7 +29,8 @@ document.getElementById('select-trigger').addEventListener("click", async functi
     toggleOptions();
 });
 
-function changeImage(image) {
+function changeImage(image,newMode) {
+    mode = newMode;
     img.src = image;
     document.getElementById('selectedImage').src = image;
     toggleOptions();
@@ -81,14 +83,11 @@ img.addEventListener("touchmove", function(event){
 });
 
 
-// Score on leaderboard
-//setInterval(updateDb, 60000);
-
 function increaseScore(){
-    score[0]++;
+    score[mode]++;
     sum_score++;
-    count.innerHTML = score[0];
-    document.getElementById("playerRow").cells[1].innerHTML = score[0];
+    count.innerHTML = score[mode];
+    document.getElementById("playerRow").cells[1+mode].innerHTML = score[mode];
     document.getElementById("playerRow").cells[4].innerHTML = sum_score;
 }
 
