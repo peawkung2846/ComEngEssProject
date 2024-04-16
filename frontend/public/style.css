@@ -1,7 +1,7 @@
 body {
     margin: 0%;
     padding: 0%;
-    background: linear-gradient(to right, #ffefba, #ffffff);
+    background: linear-gradient(to right, #2D9596, #F1FADA);
     overflow-y: auto; /* Change overflow to auto */
     font-family: Nunito, sans-serif;
 }
@@ -153,16 +153,16 @@ label{
 .fl-table thead th {
     top: 0;
     position: sticky;
-    color: #ffffff;
-    background: #4FC3A1;
+    color: #0B666A;
+    background: #9AD0C2;
 }
 
 
 .fl-table thead th:nth-child(odd) {
     top: 0;
     position: sticky;
-    color: #ffffff;
-    background: #324960;
+    color: #97FEED;
+    background: #265073;
 }
 
 .fl-table tr:nth-child(even) {

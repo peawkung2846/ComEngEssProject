@@ -31,6 +31,7 @@ document.getElementById('select-trigger').addEventListener("click", async functi
 
 function changeImage(image,newMode) {
     mode = newMode;
+    count.innerHTML = score[mode];
     img.src = image;
     document.getElementById('selectedImage').src = image;
     toggleOptions();
