@@ -95,7 +95,7 @@ function increaseScore(){
 async function updateDb(){
     if(sum_score === prev_sum){
         await fetchAndDrawTable(userIp.ip);
-        drawPlayerRow(username,score);
+        drawPlayerRow(username,score,0);
         return;
     }
     const payload = {
@@ -105,7 +105,7 @@ async function updateDb(){
     update(payload);
     prev_sum = sum_score;
     await fetchAndDrawTable(userIp.ip);
-    drawPlayerRow(username,score);
+    drawPlayerRow(username,score,0);
 }
 
 setInterval(updateDb, 60000);
@@ -125,7 +125,7 @@ async function openPopup() {
         sum_score = score[0]+score[1]+score[2];
         prev_sum = sum_score;
         count.innerHTML = score[0];
-        drawPlayerRow(username,score);
+        drawPlayerRow(username,score,0,0);
     }
     else{
         popupOverlay.style.display = 'block';
@@ -142,7 +142,7 @@ function closePopupFunc() {
 document.getElementById('signup').addEventListener("click", async function(){ 
     username = emailInput.value;
     closePopupFunc();
-    drawPlayerRow(username,score);
+    drawPlayerRow(username,score,1);
     userIp = await getUserIP();
     const payload = {
         id: userIp.ip,

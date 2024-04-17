@@ -34,11 +34,16 @@ export async function fetchAndDrawTable(userip){
     drawTable(items,userip);
 }
 
-export function drawPlayerRow(name,score){
+export function drawPlayerRow(name,score,mode){
     const table = document.getElementById("table-body");
     const row = table.insertRow();
     row.id = 'playerRow';
-    row.insertCell().innerText = name+" #"+userRank.toString();
+    if(mode == 1){
+        row.insertCell().innerText = name+" #new player";
+    }
+    else{
+        row.insertCell().innerText = name+" #"+userRank.toString();
+    }
     row.insertCell().innerText = score[0];
     row.insertCell().innerText = score[1];
     row.insertCell().innerText = score[2];
