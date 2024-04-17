@@ -13,6 +13,7 @@ let userIp;
 var username;
 var mode = 0;
 let touchStarted = false;
+let clickStarted = false;
 document.addEventListener("DOMContentLoaded", async () =>{
     getUserIP().then((data) => {
         fetchAndDrawTable(data.ip);
@@ -67,23 +68,20 @@ img.addEventListener("mouseup", function(event){
 
 // touch event
 img.addEventListener("touchstart", function(event){
-    if(!touchStarted){
-        touchStarted = true;
-        increaseScore();
-        if (img.src.includes('popcat1.png')) {
-            img.src = 'popcat2.png';
-            audio.play();
-        }
-        else if(img.src.includes('popcat2.png')){
-            img.src = 'popcat1.png';
-            audio.play();
-        }
+    event.preventDefault();
+    increaseScore();
+    if (img.src.includes('popcat1.png')) {
+        img.src = 'popcat2.png';
+        audio.play();
+    }
+    else if(img.src.includes('popcat2.png')){
+        img.src = 'popcat1.png';
+        audio.play();
     }
     
 });
 
 img.addEventListener("touchend", function(event){
-    touchStarted = false;
     if (img.src.includes('popcat2.png')) {
         img.src = 'popcat1.png';
     }
