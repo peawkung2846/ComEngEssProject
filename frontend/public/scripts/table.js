@@ -12,7 +12,7 @@ function drawTable(items,userip) {
     table.innerHTML = "";
     const sorted = items.sort((a, b) => sumA(b.pop) - sumA(a.pop));
     userRank = 1+items.length - (items.length-sorted.findIndex(item => item.id === userip));
-    const firstTenItems = sorted.slice(0, 10);
+    const firstTenItems = sorted.slice(0, 15);
     for (const item of firstTenItems) {
         if(item.id === userip){
             index++;

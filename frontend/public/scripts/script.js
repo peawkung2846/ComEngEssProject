@@ -4,6 +4,7 @@ import { getUserIP , checkID, createItem, update} from "./api.js";
 window.changeImage = changeImage; //when system can find function
 
 var img = document.getElementById("selectedImage");
+var mainscreen = document.getElementById("container");
 var count = document.getElementById("score");
 var score = [0,0,0];
 var sum_score = 0;
@@ -14,11 +15,13 @@ var username;
 var mode = 0;
 let touchStarted = false;
 let clickStarted = false;
+let init = 0;
 document.addEventListener("DOMContentLoaded", async () =>{
     getUserIP().then((data) => {
         fetchAndDrawTable(data.ip);
     });;
     await openPopup();
+    init = 1;
 })
 
 function toggleOptions() {
@@ -39,7 +42,9 @@ function changeImage(image,newMode) {
 }
 
 
-img.addEventListener("mousedown", function(event){
+mainscreen.addEventListener("mousedown", function(event){
+    var options = document.getElementById('options');
+    options.style.display = options.style.display === 'block' ? 'none' : 'none';
     increaseScore();
     console.log("touch");
     if (img.src.includes('popcat1.png')) {
@@ -55,7 +60,7 @@ img.addEventListener("mousedown", function(event){
     
 });
 
-img.addEventListener("mouseup", function(event){
+mainscreen.addEventListener("mouseup", function(event){
     if (img.src.includes('popcat2.png')) {
         img.src = 'popcat1.png';
     }
@@ -67,8 +72,10 @@ img.addEventListener("mouseup", function(event){
 });
 
 // touch event
-img.addEventListener("touchstart", function(event){
+mainscreen.addEventListener("touchstart", function(event){
     event.preventDefault();
+    var options = document.getElementById('options');
+    options.style.display = options.style.display === 'block' ? 'none' : 'none';
     increaseScore();
     if (img.src.includes('popcat1.png')) {
         img.src = 'popcat2.png';
@@ -81,7 +88,7 @@ img.addEventListener("touchstart", function(event){
     
 });
 
-img.addEventListener("touchend", function(event){
+mainscreen.addEventListener("touchend", function(event){
     if (img.src.includes('popcat2.png')) {
         img.src = 'popcat1.png';
     }
@@ -100,6 +107,9 @@ function increaseScore(){
 }
 
 async function updateDb(){
+    if(init === 0){
+        return;
+    }
     if(sum_score === prev_sum){
         await fetchAndDrawTable(userIp.ip);
         drawPlayerRow(username,score,0);
