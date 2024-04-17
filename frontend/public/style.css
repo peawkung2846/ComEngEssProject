@@ -75,14 +75,14 @@ label{
     position: fixed;
     top: 2vw; 
     left: 2vw; 
-    border: 0.2vw solid #000;
+    border: 0.15vw solid #000;
     border-radius: 1vw;
 }
 
 
 #select-trigger {
     background-color: rgba(255, 255, 255, 0.25); /* Transparent white color */
-    border: 0.1vw solid #ccc; /* Change border to viewport width */
+    border: 0.1vw solid #2D9596; /* Change border to viewport width */
     border-radius: 1vw; /* Change border radius to viewport width */
     padding: 0.5vw; /* Change padding to viewport width */
     cursor: pointer;
@@ -100,7 +100,7 @@ label{
     max-height: 30vw; /* Change max-height to viewport width */
     overflow-y: auto;
     background-color: rgba(255, 255, 255, 0.25);
-    border: 0.1vw solid #ccc; /* Change border to viewport width */
+    border: 0.1vw solid #2D9596; /* Change border to viewport width */
     border-top: none;
     border-radius: 1vw 1vw 1vw 1vw; /* Change border radius to viewport width */
     box-shadow: 0 0.4vw 0.8vw rgba(0, 0, 0, 0.1); /* Change box shadow to viewport width */
