@@ -40,6 +40,7 @@ function changeImage(image,newMode) {
 
 img.addEventListener("mousedown", function(event){
     increaseScore();
+    console.log("touch");
     if (img.src.includes('popcat1.png')) {
         img.src = 'popcat2.png';
         audio.currentTime = 0;
@@ -49,7 +50,8 @@ img.addEventListener("mousedown", function(event){
         img.src = 'popcat1.png';
         audio.currentTime = 0;
         audio.play();
-    }
+    } 
+    
 });
 
 img.addEventListener("mouseup", function(event){
@@ -58,7 +60,9 @@ img.addEventListener("mouseup", function(event){
     }
     else if(img.src.includes('popcat1.png')){
         img.src = 'popcat2.png';
-    }
+    }  
+    
+    
 });
 
 // touch event
@@ -83,7 +87,7 @@ img.addEventListener("touchend", function(event){
     if (img.src.includes('popcat2.png')) {
         img.src = 'popcat1.png';
     }
-    if (img.src.includes('popcat1.png')) {
+    else if (img.src.includes('popcat1.png')) {
         img.src = 'popcat2.png';
     }
 });
