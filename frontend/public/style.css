@@ -75,7 +75,7 @@ label{
 .select-container {
     display: inline-block;
     position: fixed;
-    top: 2.5vw; 
+    top: 2vw; 
     left: 3vw; 
     border: 0.15vw solid #000;
     border-radius: 1vw;
@@ -94,6 +94,7 @@ label{
     padding: 0.5vw; /* Change padding to viewport width */
     cursor: pointer;
     transition: background-color 0.3s;
+    font-size: 1.5vw;
 }
 #select-trigger:hover{
     background-color: #FFF5E0;
@@ -306,6 +307,12 @@ label{
     #selectedImage{
         padding-top: 15px;
         margin-bottom: -3%;
+    }
+    .fl-table tr td{
+        font-size: 2.5vw;
+    }
+    .fl-table{
+        font-size: 2.5vw;
     }
 }
 
