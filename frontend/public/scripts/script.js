@@ -17,7 +17,7 @@ let touchStarted = false;
 let clickStarted = false;
 let init = 0;
 document.addEventListener("DOMContentLoaded", async () =>{
-    getUserIP().then((data) => {
+    await getUserIP().then((data) => {
         fetchAndDrawTable(data.ip);
     });;
     await openPopup();
@@ -41,12 +41,39 @@ function changeImage(image,newMode) {
     toggleOptions();
 }
 
+document.addEventListener('keydown', function(event) {
+    if (event.code === 'Space') {
+        event.preventDefault();
+    }
+    var options = document.getElementById('options');
+    options.style.display = options.style.display === 'block' ? 'none' : 'none';
+    increaseScore();
+    if (img.src.includes('popcat1.png')) {
+        img.src = 'popcat2.png';
+        audio.currentTime = 0;
+        audio.play();
+    }
+    else if(img.src.includes('popcat2.png')){
+        img.src = 'popcat1.png';
+        audio.currentTime = 0;
+        audio.play();
+    } 
+});
+
+document.addEventListener('keyup', function(event) {
+    if (img.src.includes('popcat2.png')) {
+        img.src = 'popcat1.png';
+    }
+    else if(img.src.includes('popcat1.png')){
+        img.src = 'popcat2.png';
+    }  
+});
+
 
 mainscreen.addEventListener("mousedown", function(event){
     var options = document.getElementById('options');
     options.style.display = options.style.display === 'block' ? 'none' : 'none';
     increaseScore();
-    console.log("touch");
     if (img.src.includes('popcat1.png')) {
         img.src = 'popcat2.png';
         audio.currentTime = 0;

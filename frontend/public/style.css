@@ -1,6 +1,7 @@
 body {
     margin: 0%;
     padding: 0%;
+    
     background: linear-gradient(to right, #2D9596, #F1FADA);
     overflow-y: auto; /* Change overflow to auto */
     font-family: Nunito, sans-serif;
@@ -74,14 +75,15 @@ label{
 .select-container {
     display: inline-block;
     position: fixed;
-    top: 2vw; 
-    left: 2vw; 
+    top: 2.5vw; 
+    left: 3vw; 
     border: 0.15vw solid #000;
     border-radius: 1vw;
 }
 
 #selectedImage{
     padding-top: 15px;
+    margin-bottom: -1.5%;
 }
 
 
@@ -135,7 +137,7 @@ label{
     overflow:hidden;
     overflow-x: scroll;
     overflow-y: scroll;
-    height: 150px;
+    height: 170px;
 }
 
 /*table part*/
@@ -202,38 +204,26 @@ label{
         width: 80%;
         height: 80%;
     }
-}
-
-/*iPhone se*/
-@media (max-width: 375px) {
-    .table-wrapper{
-        width: 80%;
-        height: 250px;
-    }
-    #selectedImage{
-        width: 80%;
-        height: 80%;
-    }
     h1{
-        font-size: 6.5vw; /* Change font size to viewport width */
-        margin: 3% 0% -6% 0%;
+        font-size: 7.0vw; /* Change font size to viewport width */
+        margin: 3% 0% -8% 0%;
         font-family: Nunito, sans-serif;
-        -webkit-text-stroke: 1.5px black;
+        -webkit-text-stroke: 1.0px black;
         color: white;
         padding-top: 5px;
     }
     #score{
-        font-size: 7vw;
+        font-size: 7.5vw;
         font-family: Nunito, sans-serif;
         -webkit-text-stroke: 1px black;
         color: white;
-        margin-bottom: -7%;
+        margin-bottom: -9%;
     }
     .select-container {
         display: inline-block;
         position: fixed;
-        top: 4.75vw; 
-        left: 4vw; 
+        top: 4.95vw; 
+        left: 3.75vw; 
         border: 0.15vw solid #000;
         border-radius: 1vw;
     }
@@ -251,6 +241,64 @@ label{
         cursor: pointer;
         transition: background-color 0.3s;
         font-size: 4vw;
+    }
+    #selectedImage{
+        padding-top: 15px;
+        margin-bottom: -3%;
+    }
+}
+
+/*iPhone se*/
+@media (max-width: 375px) {
+    .table-wrapper{
+        width: 80%;
+        height: 250px;
+    }
+    #selectedImage{
+        width: 80%;
+        height: 80%;
+    }
+    h1{
+        font-size: 7.0vw; /* Change font size to viewport width */
+        margin: 3% 0% -8% 0%;
+        font-family: Nunito, sans-serif;
+        -webkit-text-stroke: 1.0px black;
+        color: white;
+        padding-top: 5px;
+    }
+    #score{
+        font-size: 7.5vw;
+        font-family: Nunito, sans-serif;
+        -webkit-text-stroke: 1px black;
+        color: white;
+        margin-bottom: -9%;
+    }
+    .select-container {
+        display: inline-block;
+        position: fixed;
+        top: 4.95vw; 
+        left: 3.75vw; 
+        border: 0.15vw solid #000;
+        border-radius: 1vw;
+    }
+    
+    #selectedImage{
+        padding-top: 15px;
+    }
+    
+    
+    #select-trigger {
+        background-color: #FFF5E0; /* Transparent white color */
+        border: 0.15vw solid #FFF5E0; /* Change border to viewport width */
+        border-radius: 1vw; /* Change border radius to viewport width */
+        padding: 0.5vw; /* Change padding to viewport width */
+        cursor: pointer;
+        transition: background-color 0.3s;
+        font-size: 4vw;
+    }
+    #selectedImage{
+        padding-top: 15px;
+        margin-bottom: -3%;
     }
 }
 

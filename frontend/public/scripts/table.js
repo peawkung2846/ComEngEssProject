@@ -6,7 +6,7 @@ function sumA(inp){
     return inp.reduce((sum, current) => sum + current, 0);
 }
 
-function drawTable(items,userip) {
+async function  drawTable(items,userip) {
     var index = 1;
     const table = document.getElementById("table-body");
     table.innerHTML = "";
@@ -34,7 +34,7 @@ export async function fetchAndDrawTable(userip){
     drawTable(items,userip);
 }
 
-export function drawPlayerRow(name,score,mode){
+export async function drawPlayerRow(name,score,mode){
     const table = document.getElementById("table-body");
     const row = table.insertRow();
     row.id = 'playerRow';
