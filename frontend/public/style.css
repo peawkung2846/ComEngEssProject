@@ -71,34 +71,38 @@ label{
     display: none;
 }
 .select-container {
-    position: relative;
     display: inline-block;
     position: fixed;
-    top: 2vw; /* Change top to viewport width */
-    left: 2vw; /* Change left to viewport width */
-    border: 0.2vw solid #000; /* Change border to viewport width */
-    border-radius: 1vw; /* Change border radius to viewport width */
+    top: 2vw; 
+    left: 2vw; 
+    border: 0.2vw solid #000;
+    border-radius: 1vw;
 }
 
+
 #select-trigger {
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.25); /* Transparent white color */
     border: 0.1vw solid #ccc; /* Change border to viewport width */
     border-radius: 1vw; /* Change border radius to viewport width */
     padding: 0.5vw; /* Change padding to viewport width */
     cursor: pointer;
+    transition: background-color 0.3s;
+}
+#select-trigger:hover{
+    background-color: rgba(255, 255, 255, 0.5);;
 }
 
 .options {
     position: absolute;
-    top: 100%;
+    top: 115%;
     left: 0;
     width: 100%;
     max-height: 30vw; /* Change max-height to viewport width */
     overflow-y: auto;
-    background-color: #fff;
+    background-color: rgba(255, 255, 255, 0.25);
     border: 0.1vw solid #ccc; /* Change border to viewport width */
     border-top: none;
-    border-radius: 0 0 1vw 1vw; /* Change border radius to viewport width */
+    border-radius: 1vw 1vw 1vw 1vw; /* Change border radius to viewport width */
     box-shadow: 0 0.4vw 0.8vw rgba(0, 0, 0, 0.1); /* Change box shadow to viewport width */
     display: none;
 }
@@ -106,6 +110,10 @@ label{
 .option {
     padding: 0.5vw; /* Change padding to viewport width */
     cursor: pointer;
+    transition: background-color 0.3s;
+}
+.option:hover{
+    background-color: rgba(255, 255, 255, 0.5);
 }
 
 .option img {
