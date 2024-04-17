@@ -146,7 +146,7 @@ label{
 }
 
 .fl-table td {
-    border-right: 1px solid #f8f8f8;
+    /* border-right: 1px solid #f8f8f8; */
     font-size: 12px;
 }
 
@@ -172,7 +172,8 @@ label{
 #playerRow{
     position: sticky; /* Set the last row to sticky */
     bottom: 0; /* Stick to the bottom */
-    background-color: #fff;
+    color: #97FEED;
+    background-color: #265073;
 }
 
 /* Responsive */
