@@ -1,5 +1,4 @@
 import { fetchAndDrawTable, drawPlayerRow } from "./table.js";
-import { updateClickCount ,updateClickTimes} from "./click.js";
 import { getUserIP , checkID, createItem, update} from "./api.js";
 
 window.changeImage = changeImage; //when system can find function
@@ -13,6 +12,7 @@ var audio = new Audio('pop.mp3');
 let userIp;
 var username;
 var mode = 0;
+let touchStarted = false;
 document.addEventListener("DOMContentLoaded", async () =>{
     getUserIP().then((data) => {
         fetchAndDrawTable(data.ip);
@@ -63,18 +63,23 @@ img.addEventListener("mouseup", function(event){
 
 // touch event
 img.addEventListener("touchstart", function(event){
-    increaseScore();
-    if (img.src.includes('popcat1.png')) {
-        img.src = 'popcat2.png';
-        audio.play();
+    if(!touchStarted){
+        touchStarted = true;
+        increaseScore();
+        if (img.src.includes('popcat1.png')) {
+            img.src = 'popcat2.png';
+            audio.play();
+        }
+        else if(img.src.includes('popcat2.png')){
+            img.src = 'popcat1.png';
+            audio.play();
+        }
     }
-    else if(img.src.includes('popcat2.png')){
-        img.src = 'popcat1.png';
-        audio.play();
-    }
+    
 });
 
-img.addEventListener("touchmove", function(event){
+img.addEventListener("touchend", function(event){
+    touchStarted = false;
     if (img.src.includes('popcat2.png')) {
         img.src = 'popcat1.png';
     }
