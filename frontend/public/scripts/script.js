@@ -108,7 +108,7 @@ async function updateDb(){
     drawPlayerRow(username,score,0);
 }
 
-setInterval(updateDb, 60000);
+setInterval(updateDb, 10000);
 
 
 const popupOverlay = document.getElementById('popupOverlay');
