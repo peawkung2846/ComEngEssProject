@@ -18,6 +18,18 @@ let clickStarted = false;
 let init = 0;
 let pressed = 0;
 document.addEventListener("DOMContentLoaded", async () =>{
+    var images = [
+        '../res/peaw1.png',
+        '../res/peaw2.png',
+        '../res/mes1.png',
+        '../res/mes2.png',
+        '../res/nine1.png',
+        '../res/nine2.png'
+        ];
+        
+        $(images).each(function() {
+        var image = $('<img />').attr('src', this);
+        });
     await getUserIP().then((data) => {
         fetchAndDrawTable(data.ip);
     });;
@@ -43,40 +55,33 @@ function changeImage(image,newMode) {
 async function toggleImage(){
     if (img.src.includes('peaw1.png')) {
         img.src = '../res/peaw2.png';
-        audio.currentTime = 0;
     }
     else if(img.src.includes('mes1.png')){
         img.src = '../res/mes2.png';
-        audio.currentTime = 0;
     } 
     else if(img.src.includes('nine1.png')){
         img.src = '../res/nine2.png';
-        audio.currentTime = 0;
     } 
-    console.log(1);
-    await new Promise(resolve => setTimeout(resolve, 50));
-    console.log(0);
-    if (img.src.includes('peaw2.png')) {
-        img.src = '../res/peaw1.png';
-    }
-    else if(img.src.includes('mes2.png')){
-        img.src = '../res/mes1.png';
-    } 
-    else if(img.src.includes('nine2.png')){
-        img.src = '../res/nine1.png';
-    } 
-    else if(img.src.includes('popcat1.png')){
-        img.src = 'popcat2.png';
-    }  
+    var delayInMilliseconds = 500; 
+
+    setTimeout(function() {
+        if (img.src.includes('peaw2.png')) {
+            img.src = '../res/peaw1.png';
+        }
+        else if (img.src.includes('mes2.png')) {
+            img.src = '../res/mes1.png';
+        }
+        else if (img.src.includes('nine2.png')) {
+            img.src = '../res/nine1.png';
+        }
+    }, delayInMilliseconds);
 }
 
 document.addEventListener('keydown', function(event) {
     if(init === 0 || pressed === 1){
         return;
     }
-    if (event.code === 'Space') {
-        event.preventDefault();
-    }
+    event.preventDefault();
     var options = document.getElementById('options');
     options.style.display = options.style.display === 'block' ? 'none' : 'none';
     increaseScore();
@@ -130,6 +135,7 @@ mainscreen.addEventListener("touchend", function(event){
 
 
 function increaseScore(){
+    audio.currentTime = 0;
     audio.play();
     score[mode]++;
     sum_score++;
