@@ -9,7 +9,7 @@ var count = document.getElementById("score");
 var score = [0,0,0];
 var sum_score = 0;
 var prev_sum = 0;
-var audio = new Audio('pop.mp3');
+var audio = new Audio('../res/pop.mp3');
 let userIp;
 var username;
 var mode = 0;
@@ -50,13 +50,18 @@ document.addEventListener('keydown', function(event) {
     var options = document.getElementById('options');
     options.style.display = options.style.display === 'block' ? 'none' : 'none';
     increaseScore();
-    if (img.src.includes('popcat1.png')) {
-        img.src = 'popcat2.png';
+    if (img.src.includes('peaw1.png')) {
+        img.src = '../res/peaw2.png';
         audio.currentTime = 0;
         audio.play();
     }
-    else if(img.src.includes('popcat2.png')){
-        img.src = 'popcat1.png';
+    else if(img.src.includes('mes1.png')){
+        img.src = '../res/mes2.png';
+        audio.currentTime = 0;
+        audio.play();
+    } 
+    else if(img.src.includes('nine1.png')){
+        img.src = '../res/nine2.png';
         audio.currentTime = 0;
         audio.play();
     } 
@@ -66,12 +71,15 @@ document.addEventListener('keyup', function(event) {
     if(init === 0){
         return;
     }
-    if (img.src.includes('popcat2.png')) {
-        img.src = 'popcat1.png';
+    if (img.src.includes('peaw2.png')) {
+        img.src = '../res/peaw1.png';
     }
-    else if(img.src.includes('popcat1.png')){
-        img.src = 'popcat2.png';
-    }  
+    else if(img.src.includes('mes2.png')){
+        img.src = '../res/mes1.png';
+    } 
+    else if(img.src.includes('nine2.png')){
+        img.src = '../res/nine1.png';
+    } 
 });
 
 
@@ -82,16 +90,21 @@ mainscreen.addEventListener("mousedown", function(event){
     var options = document.getElementById('options');
     options.style.display = options.style.display === 'block' ? 'none' : 'none';
     increaseScore();
-    if (img.src.includes('popcat1.png')) {
-        img.src = 'popcat2.png';
+    if (img.src.includes('peaw1.png')) {
+        img.src = '../res/peaw2.png';
         audio.currentTime = 0;
         audio.play();
     }
-    else if(img.src.includes('popcat2.png')){
-        img.src = 'popcat1.png';
+    else if(img.src.includes('mes1.png')){
+        img.src = '../res/mes2.png';
         audio.currentTime = 0;
         audio.play();
     } 
+    else if(img.src.includes('nine1.png')){
+        img.src = '../res/nine2.png';
+        audio.currentTime = 0;
+        audio.play();
+    }  
     
 });
 
@@ -99,12 +112,16 @@ mainscreen.addEventListener("mouseup", function(event){
     if(init === 0){
         return;
     }
-    if (img.src.includes('popcat2.png')) {
-        img.src = 'popcat1.png';
+    if (img.src.includes('peaw2.png')) {
+        img.src = '../res/peaw1.png';
     }
-    else if(img.src.includes('popcat1.png')){
-        img.src = 'popcat2.png';
-    }  
+    else if(img.src.includes('mes2.png')){
+        img.src = '../res/mes1.png';
+    } 
+    else if(img.src.includes('nine2.png')){
+        img.src = '../res/nine1.png';
+
+    } 
     
     
 });
@@ -118,14 +135,21 @@ mainscreen.addEventListener("touchstart", function(event){
     var options = document.getElementById('options');
     options.style.display = options.style.display === 'block' ? 'none' : 'none';
     increaseScore();
-    if (img.src.includes('popcat1.png')) {
-        img.src = 'popcat2.png';
+    if (img.src.includes('peaw1.png')) {
+        img.src = '../res/peaw2.png';
+        audio.currentTime = 0;
         audio.play();
     }
-    else if(img.src.includes('popcat2.png')){
-        img.src = 'popcat1.png';
+    else if(img.src.includes('mes1.png')){
+        img.src = '../res/mes2.png';
+        audio.currentTime = 0;
         audio.play();
-    }
+    } 
+    else if(img.src.includes('nine1.png')){
+        img.src = '../res/nine2.png';
+        audio.currentTime = 0;
+        audio.play();
+    } 
     
 });
 
@@ -133,12 +157,15 @@ mainscreen.addEventListener("touchend", function(event){
     if(init === 0){
         return;
     }
-    if (img.src.includes('popcat2.png')) {
-        img.src = 'popcat1.png';
+    if (img.src.includes('peaw2.png')) {
+        img.src = '../res/peaw1.png';
     }
-    else if (img.src.includes('popcat1.png')) {
-        img.src = 'popcat2.png';
-    }
+    else if(img.src.includes('mes2.png')){
+        img.src = '../res/mes1.png';
+    } 
+    else if(img.src.includes('nine2.png')){
+        img.src = '../res/nine1.png';
+    } 
 });
 
 
