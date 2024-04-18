@@ -20,6 +20,6 @@ process.on("unhandledRejection", (err) => {
 });
 
 const PORT = 3222;
-app.listen(PORT, "0.0.0.0", () => {
+app.listen(PORT, "34.200.104.84", () => {
   console.log(`Backend Server ready at http://localhost:${PORT}`);
 });
