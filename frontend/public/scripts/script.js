@@ -17,6 +17,28 @@ let touchStarted = false;
 let clickStarted = false;
 let init = 0;
 let pressed = 0;
+
+function preloadImages(array) {
+    if (!preloadImages.list) {
+        preloadImages.list = [];
+    }
+    var list = preloadImages.list;
+    for (var i = 0; i < array.length; i++) {
+        var img = new Image();
+        img.onload = function() {
+            var index = list.indexOf(this);
+            if (index !== -1) {
+                // remove image from the array once it's loaded
+                // for memory consumption reasons
+                list.splice(index, 1);
+            }
+        }
+        list.push(img);
+        img.src = array[i];
+    }
+}
+
+
 document.addEventListener("DOMContentLoaded", async () =>{
     var images = [
         '../res/peaw1.png',
@@ -27,9 +49,7 @@ document.addEventListener("DOMContentLoaded", async () =>{
         '../res/nine2.png'
         ];
         
-        $(images).each(function() {
-        var image = $('<img />').attr('src', this);
-        });
+    preloadImages(images);
     await getUserIP().then((data) => {
         fetchAndDrawTable(data.ip);
     });;
@@ -62,7 +82,7 @@ async function toggleImage(){
     else if(img.src.includes('nine1.png')){
         img.src = '../res/nine2.png';
     } 
-    var delayInMilliseconds = 500; 
+    var delayInMilliseconds = 200; 
 
     setTimeout(function() {
         if (img.src.includes('peaw2.png')) {
