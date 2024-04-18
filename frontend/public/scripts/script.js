@@ -76,17 +76,14 @@ function changeImage(image,newMode) {
 function toggleImage() {
     console.log(img.src);
     if (img.src.includes('peaw1.png')) {
-        console.log('a');
         img.src = '../res/peaw2.png';
     } else if (img.src.includes('mes1.png')) {
         img.src = '../res/mes2.png';
     } else if (img.src.includes('nine1.png')) {
         img.src = '../res/nine2.png';
     }
-    console.log('b');
     setTimeout(function() {
         if (img.src.includes('peaw2.png')) {
-            console.log('c');
             img.src = '../res/peaw1.png';
         } else if (img.src.includes('mes2.png')) {
             img.src = '../res/mes1.png';
