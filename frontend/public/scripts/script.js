@@ -160,7 +160,7 @@ async function updateDb(){
         return;
     }
     const payload = {
-        filterName: username,
+        filterId: userIp.ip,
         value: score,
     };
     update(payload);

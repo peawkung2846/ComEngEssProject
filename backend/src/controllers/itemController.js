@@ -18,9 +18,9 @@ export const createItem = async (req, res) => {
 
 export const update = async (req, res) => {
   try {
-    const {filterName,value} = req.body;
+    const {filterId,value} = req.body;
     let items = []
-    items = await Item.find({ name : filterName });
+    items = await Item.find({ id : filterId });
     items[0].pop = value;
     await items[0].save();
 
