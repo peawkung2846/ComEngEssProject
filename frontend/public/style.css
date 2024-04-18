@@ -202,8 +202,8 @@ label{
         height: 300px;
     }
     #selectedImage{
-        width: 80%;
-        height: 80%;
+        width: 500px;
+        height: 500px;
     }
     h1{
         font-size: 7.0vw; /* Change font size to viewport width */
@@ -219,6 +219,8 @@ label{
         -webkit-text-stroke: 2.5px black;
         color: white;
         margin-bottom: -9%;
+        padding-bottom: 10vw;
+        z-index: 999;
     }
     .select-container {
         display: inline-block;
