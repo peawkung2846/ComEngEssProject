@@ -16,6 +16,7 @@ var mode = 0;
 let touchStarted = false;
 let clickStarted = false;
 let init = 0;
+let pressed = 0;
 document.addEventListener("DOMContentLoaded", async () =>{
     await getUserIP().then((data) => {
         fetchAndDrawTable(data.ip);
@@ -41,7 +42,7 @@ function changeImage(image,newMode) {
 }
 
 document.addEventListener('keydown', function(event) {
-    if(init === 0){
+    if(init === 0 || pressed === 1){
         return;
     }
     if (event.code === 'Space') {
@@ -65,6 +66,7 @@ document.addEventListener('keydown', function(event) {
         audio.currentTime = 0;
         audio.play();
     } 
+    pressed = 1;
 });
 
 document.addEventListener('keyup', function(event) {
@@ -80,6 +82,10 @@ document.addEventListener('keyup', function(event) {
     else if(img.src.includes('nine2.png')){
         img.src = '../res/nine1.png';
     } 
+    else if(img.src.includes('popcat1.png')){
+        img.src = 'popcat2.png';
+    }  
+    pressed = 0;
 });
 
 
@@ -187,7 +193,7 @@ async function updateDb(){
         return;
     }
     const payload = {
-        filterName: username,
+        filterId: userIp.ip,
         value: score,
     };
     update(payload);
