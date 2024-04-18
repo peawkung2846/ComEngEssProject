@@ -202,8 +202,8 @@ label{
         height: 300px;
     }
     #selectedImage{
-        width: 500px;
-        height: 500px;
+        width: 80%;
+        height: 80%;
     }
     h1{
         font-size: 7.0vw; /* Change font size to viewport width */
