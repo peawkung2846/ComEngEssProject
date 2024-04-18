@@ -21,7 +21,6 @@ document.addEventListener("DOMContentLoaded", async () =>{
         fetchAndDrawTable(data.ip);
     });;
     await openPopup();
-    init = 1;
 })
 
 function toggleOptions() {
@@ -42,6 +41,9 @@ function changeImage(image,newMode) {
 }
 
 document.addEventListener('keydown', function(event) {
+    if(init === 0){
+        return;
+    }
     if (event.code === 'Space') {
         event.preventDefault();
     }
@@ -61,6 +63,9 @@ document.addEventListener('keydown', function(event) {
 });
 
 document.addEventListener('keyup', function(event) {
+    if(init === 0){
+        return;
+    }
     if (img.src.includes('popcat2.png')) {
         img.src = 'popcat1.png';
     }
@@ -71,6 +76,9 @@ document.addEventListener('keyup', function(event) {
 
 
 mainscreen.addEventListener("mousedown", function(event){
+    if(init === 0){
+        return;
+    }
     var options = document.getElementById('options');
     options.style.display = options.style.display === 'block' ? 'none' : 'none';
     increaseScore();
@@ -88,6 +96,9 @@ mainscreen.addEventListener("mousedown", function(event){
 });
 
 mainscreen.addEventListener("mouseup", function(event){
+    if(init === 0){
+        return;
+    }
     if (img.src.includes('popcat2.png')) {
         img.src = 'popcat1.png';
     }
@@ -100,6 +111,9 @@ mainscreen.addEventListener("mouseup", function(event){
 
 // touch event
 mainscreen.addEventListener("touchstart", function(event){
+    if(init === 0){
+        return;
+    }
     event.preventDefault();
     var options = document.getElementById('options');
     options.style.display = options.style.display === 'block' ? 'none' : 'none';
@@ -116,6 +130,9 @@ mainscreen.addEventListener("touchstart", function(event){
 });
 
 mainscreen.addEventListener("touchend", function(event){
+    if(init === 0){
+        return;
+    }
     if (img.src.includes('popcat2.png')) {
         img.src = 'popcat1.png';
     }
@@ -170,6 +187,7 @@ async function openPopup() {
         prev_sum = sum_score;
         count.innerHTML = score[0];
         drawPlayerRow(username,score,0,0);
+        init = 1;
     }
     else{
         popupOverlay.style.display = 'block';
@@ -194,6 +212,7 @@ document.getElementById('signup').addEventListener("click", async function(){
         pop: score,
       };
     createItem(payload);
+    init = 1;
 });
 
 
