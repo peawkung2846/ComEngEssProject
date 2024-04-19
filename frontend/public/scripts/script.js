@@ -72,20 +72,20 @@ function changeImage(image,newMode) {
 
 function toggleImage() {
     if (img.src.includes('peaw1.png')) {
-        img.src = '../res/peaw2.png';
+        img.src = '/res/peaw2.png';
     } else if (img.src.includes('mes1.png')) {
-        img.src = '../res/mes2.png';
+        img.src = '/res/mes2.png';
     } else if (img.src.includes('nine1.png')) {
-        img.src = '../res/nine2.png';
+        img.src = '/res/nine2.png';
     }
     else{
         setTimeout(function() {
             if (img.src.includes('peaw2.png')) {
-                img.src = '../res/peaw1.png';
+                img.src = '/res/peaw1.png';
             } else if (img.src.includes('mes2.png')) {
-                img.src = '../res/mes1.png';
+                img.src = '/res/mes1.png';
             } else if (img.src.includes('nine2.png')) {
-                img.src = '../res/nine1.png';
+                img.src = '/res/nine1.png';
             }
         }, 100); // Adjust the delay as needed
     }
