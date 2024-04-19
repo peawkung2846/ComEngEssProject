@@ -17,12 +17,10 @@ let touchStarted = false;
 let clickStarted = false;
 let init = 0;
 let pressed = 0;
+let preloadedImage = []
 
 function preloadImages(array) {
-    if (!preloadImages.list) {
-        preloadImages.list = [];
-    }
-    var list = preloadImages.list;
+    var list = preloadedImage;
     for (var i = 0; i < array.length; i++) {
         var img = new Image();
         img.onload = function() {
@@ -38,7 +36,6 @@ function preloadImages(array) {
     }
 }
 
-
 document.addEventListener("DOMContentLoaded", async () =>{
     var images = [
         '../res/peaw1.png',
@@ -49,7 +46,7 @@ document.addEventListener("DOMContentLoaded", async () =>{
         '../res/nine2.png'
         ];
         
-    preloadImages(images);
+    await preloadImages(images);
     await getUserIP().then((data) => {
         fetchAndDrawTable(data.ip);
     });;
@@ -74,7 +71,6 @@ function changeImage(image,newMode) {
 }
 
 function toggleImage() {
-    console.log(img.src);
     if (img.src.includes('peaw1.png')) {
         img.src = '../res/peaw2.png';
     } else if (img.src.includes('mes1.png')) {
@@ -82,15 +78,18 @@ function toggleImage() {
     } else if (img.src.includes('nine1.png')) {
         img.src = '../res/nine2.png';
     }
-    setTimeout(function() {
-        if (img.src.includes('peaw2.png')) {
-            img.src = '../res/peaw1.png';
-        } else if (img.src.includes('mes2.png')) {
-            img.src = '../res/mes1.png';
-        } else if (img.src.includes('nine2.png')) {
-            img.src = '../res/nine1.png';
-        }
-    }, 200); // Adjust the delay as needed
+    else{
+        setTimeout(function() {
+            if (img.src.includes('peaw2.png')) {
+                img.src = '../res/peaw1.png';
+            } else if (img.src.includes('mes2.png')) {
+                img.src = '../res/mes1.png';
+            } else if (img.src.includes('nine2.png')) {
+                img.src = '../res/nine1.png';
+            }
+        }, 100); // Adjust the delay as needed
+    }
+
 }
 
 
@@ -110,6 +109,7 @@ document.addEventListener('keyup', function(event) {
     if(init === 0){
         return;
     } 
+    toggleImage()
     pressed = 0;
 });
 
@@ -129,7 +129,7 @@ mainscreen.addEventListener("mouseup", function(event){
     if(init === 0){
         return;
     }    
-    
+    toggleImage()
 });
 
 // touch event
@@ -148,6 +148,7 @@ mainscreen.addEventListener("touchend", function(event){
     if(init === 0){
         return;
     }
+    toggleImage()
 });
 
 

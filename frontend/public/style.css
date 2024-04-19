@@ -12,6 +12,9 @@ body {
     justify-content: center;
     align-items: center;
 }
+.optionHide{
+    display:none;
+}
 h1{
     font-size: 5.5vw; /* Change font size to viewport width */
     margin: 1% 0% -5% 0%;
@@ -200,7 +203,7 @@ label{
 @media (max-width: 1100px) {
     .table-wrapper{
         width: 80%;
-        height: 300px;
+        height: 250px;
     }
     #selectedImage{
         width: 80%;
@@ -263,7 +266,7 @@ label{
 @media (max-width: 500px) {
     .table-wrapper{
         width: 80%;
-        height: 400px;
+        height: 350px;
     }
     #selectedImage{
         width: 80%;
@@ -323,7 +326,7 @@ label{
 @media (max-width: 375px) {
     .table-wrapper{
         width: 80%;
-        height: 250px;
+        height: 200px;
     }
     #selectedImage{
         width: 80%;
@@ -371,6 +374,7 @@ label{
         padding-top: 15px;
         margin-bottom: -7.5%;
     }
+    
 }
 
 
