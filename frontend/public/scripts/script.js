@@ -98,18 +98,22 @@ document.addEventListener('keydown', function(event) {
         return;
     }
     event.preventDefault();
-    var options = document.getElementById('options');
-    options.style.display = options.style.display === 'block' ? 'none' : 'none';
-    increaseScore();
-    toggleImage()
-    pressed = 1;
+    if (/^[a-zA-Z\s]$/.test(event.key)) {
+        var options = document.getElementById('options');
+        options.style.display = options.style.display === 'block' ? 'none' : 'none';
+        increaseScore();
+        toggleImage();
+        pressed = 1;
+    }
 });
 
 document.addEventListener('keyup', function(event) {
     if(init === 0){
         return;
     } 
-    toggleImage()
+    if (/^[a-zA-Z\s]$/.test(event.key)) {
+        toggleImage();
+    }
     pressed = 0;
 });
 
@@ -226,8 +230,3 @@ document.getElementById('signup').addEventListener("click", async function(){
     createItem(payload);
     init = 1;
 });
-
-
-
-
-
